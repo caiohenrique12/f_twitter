@@ -1,7 +1,24 @@
 <h1>Bem Vindo</h1>
-<%= link_to 'Criar Postagem', posts_path %><br>
+<%= link_to 'Criar Postagem', new_post_path %><br>
 <% if user_signed_in? %>
   <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
 <% end %>
 
 <h3>Suas Postagens</h3>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Titulo</th>
+      <th>Data e Hora</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.title %></td>
+        <td><%= post.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
