@@ -1,4 +1,7 @@
 <h1>Bem Vindo</h1>
-
+<%= link_to 'Criar Postagem', posts_path %><br>
+<% if user_signed_in? %>
+  <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
+<% end %>
 
 <h3>Suas Postagens</h3>
