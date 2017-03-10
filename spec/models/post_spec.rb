@@ -34,4 +34,10 @@ RSpec.describe Post, type: :model do
   it "Title have max 20 characters" do
     expect(subject.title.length).to be <= 20
   end
+
+  it "Return all posts with user signed in" do
+    post = Post.find_by_post(user.id)
+
+    expect(post).to be
+  end
 end

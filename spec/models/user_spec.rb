@@ -38,4 +38,5 @@ RSpec.describe User, type: :model do
   it "Password have min 6 characters" do
     expect(subject.password.length).to be >= 6
   end
+
 end
