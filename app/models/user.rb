@@ -7,4 +7,6 @@ class User < ActiveRecord::Base
   validates_presence_of :email, :password, :password_confirmation
   validates :email, uniqueness: true
   validates_length_of :password, minimum: 6
+
+  scope :find_by_user_email, -> (email) { where(" email LIKE ?", "#{email}%")}
 end

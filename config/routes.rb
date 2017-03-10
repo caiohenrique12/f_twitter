@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'profiles/index/:email' => 'profiles#index'
+  get 'profiles/details'
   get 'home/index'
 
   resources :posts

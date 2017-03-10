@@ -39,4 +39,8 @@ RSpec.describe User, type: :model do
     expect(subject.password.length).to be >= 6
   end
 
+  it "Find user by email " do
+    user = User.find_by_user_email(subject.email)
+    user.eql?(subject)
+  end
 end

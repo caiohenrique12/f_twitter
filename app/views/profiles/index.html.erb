@@ -1,0 +1,35 @@
+<h3>Informações</h3>
+<table border="1">
+  <thead>
+    <% @user.each do |user| %>
+      <tr>
+        <th>Email</th>
+        <th><%= user.email %></th>
+      </tr>
+    <% end %>
+  </thead>
+</table>
+
+<hr>
+<h3>Ultimos Posts</h3>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Titulo</th>
+      <th>Data e Hora</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.title %></td>
+        <td><%= post.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to "Voltar", root_path %>
