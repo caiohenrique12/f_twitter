@@ -1,14 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
+<ul class="timeline">
+  <li>
+    <div class="timeline-badge"></div>
+    <div class="timeline-panel">
+      <div class="timeline-heading">
+        <h4 class="timeline-title"><%= @post.title %></h4>
+        <p><small class="text-muted"><%= @post.text %></small></p>
+        <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> <%= @post.created_at %></small></p>
+      </div>
+    </div>
+  </li>
+</ul>
 
-<p>
-  <strong>Text:</strong>
-  <%= @post.text %>
-</p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<a href="/posts/<%= @post.id %>/edit" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
+<a href="/posts" class="btn btn-danger"><i class="fa fa-chevron-left" aria-hidden="true"></i> Voltar</a>

@@ -1,50 +1,56 @@
-<h1>Bem Vindo</h1>
-<%= link_to 'Criar Postagem', new_post_path %><br>
-<% if user_signed_in? %>
-  <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
-<% end %>
-
-<h3>Pesquisa de Usuário</h3>
-
-<%= form_tag(root_path, method: :get) do |f| %>
-  <%= text_field_tag "email", nil, placeholder: 'Digite um email' %>
-  <button type="submit" > Pesquisar</button>
-<% end %>
-<br>
-<% if @user %>
-  <table border="1">
-    <thead>
-      <tr>
-        <th>Email</th>
-        <th>Detalhes</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @user.each do |user| %>
-        <tr>
-          <td><%= user.email %></td>
-          <td><a href="/profiles/index/<%= user.email %>"> Detalhes</a></td>
-        </tr>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Pesquisa de Usuário</h3>
+      <%= form_tag(root_path, method: :get) do |f| %>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="col-md-10">
+              <%= text_field_tag "email", nil, placeholder: 'Digite um email', class: 'form-control' %>
+            </div>
+            <div class="col-md-2">
+              <button type="submit" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i> Pesquisar</button>
+            </div>
+          </div>
+        </div>
       <% end %>
-    </tbody>
-  </table>
-<% end %>
-
-<h3>Suas Postagens</h3>
-
-<table border="1">
-  <thead>
-    <tr>
-      <th>Titulo</th>
-      <th>Data e Hora</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.created_at %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <br>
+      <% if @user %>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <% @user.each do |user| %>
+              <div class="col-md-2">
+                <a href="#" class="thumbnail">
+                  <img src="..." alt="...">
+                </a>
+              </div>
+              <div class="col-md-10">
+                <b>Email:</b> <%= user.email %><br>
+                <a href="/profiles/index/<%= user.email %>" class="btn btn-link pull-right">Detalhes</a>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <a href="/posts/new" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i>
+ Nova Postagem</a>
+    <h3>Suas Postagens</h3>
+    <ul class="timeline">
+      <% @posts.each do |post| %>
+        <li>
+          <div class="timeline-badge"></div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <h4 class="timeline-title"><%= post.title %></h4>
+              <p><small class="text-muted"><%= post.text %></small></p>
+              <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> <%= post.created_at %></small></p>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

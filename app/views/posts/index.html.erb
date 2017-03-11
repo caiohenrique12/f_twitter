@@ -1,13 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Posts</h1>
-
-<table>
+<h3>Minhas Postagens</h3>
+<hr>
+<table class="table">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Text</th>
-      <th colspan="3"></th>
+      <th>Titulo</th>
+      <th>Texto</th>
+      <th>Data</th>
+      <th colspan="3">Ações</th>
     </tr>
   </thead>
 
@@ -16,14 +17,14 @@
       <tr>
         <td><%= post.title %></td>
         <td><%= post.text %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= post.created_at %></td>
+        <td><%= link_to 'Detalhes', post, class: 'btn btn-info' %></td>
+        <td><%= link_to 'Editar', edit_post_path(post), class: 'btn btn-info' %></td>
+        <td><%= link_to 'Excluir', post, method: :delete, data: { confirm: 'Você Tem Certeza?' }, class: 'btn btn-warning' %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Post', new_post_path %> || <%= link_to 'Back', root_path %>
+<a href="/posts/new" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> Novo Post</a>
+<a href="/" class="btn btn-danger"><i class="fa fa-chevron-left" aria-hidden="true"></i> Voltar</a>

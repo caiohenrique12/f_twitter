@@ -7,8 +7,27 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
+  <% if user_signed_in? %>
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+              <%= image_tag('logo.png', class: 'img-responsive', height: '50', width: '50') %><br>
+            </a>
+          </div>
+          <div class="pull-right">
+            <b style="margin-top: 10px;"><%= current_user.email %></b>
+            <%= image_tag('tony-stark.jpg', class: 'pull-right img-circle img-responsive', height: '50', width: '50', style: 'margin-bottom: 5px;') %><br>
+            <% if user_signed_in? %>
+              <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: 'pull-right', style: 'margin-right: 5px;' %>
+            <% end %>
+          </div>
+        </div>
+      </nav>
+  <% end %>
+  <div class="container">
+    <%= yield %>
+  </div>
 
 </body>
 </html>
