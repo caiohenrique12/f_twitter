@@ -1,23 +1,23 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="container">
-      <div class="card card-container">
-          <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
-          <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
-          <p id="profile-name" class="profile-name-card"></p>
-          <form class="form-signin">
-              <span id="reauth-email" class="reauth-email"></span>
-              <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email", required: true %>
-              <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Senha", required: true %>
+    <div class="card card-container">
+      <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+      <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+      <p id="profile-name" class="profile-name-card"></p>
+      <span id="reauth-email" class="reauth-email"></span>
+      <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email", required: true %>
+      <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Senha", required: true %>
 
-              <div id="remember" class="checkbox">
-                  <label>
-                      <%= f.check_box :remember_me %>
-                      <%= f.label :remember_me %>
-                  </label>
-              </div>
-              <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit"> Entrar</button>
-          </form><!-- /form -->
-          <%= render "devise/shared/links" %>
-      </div><!-- /card-container -->
+      <div id="remember" class="checkbox">
+        <label>
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </label>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit"> Entrar</button>
+      </div>
+      <%= render "devise/shared/links" %>
+    </div><!-- /card-container -->
   </div><!-- /container -->
 <% end %>

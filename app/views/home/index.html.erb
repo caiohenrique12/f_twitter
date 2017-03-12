@@ -1,56 +1,59 @@
 <div class="container">
-  <div class="row">
+  <div class="col-md-12">
+    <h3>Pesquisa de Usuário</h3>
+    <%= form_tag(root_path, method: :get) do |f| %>
+      <div class="col-md-8">
+        <div class="row">
+          <%= text_field_tag "email", nil, placeholder: 'Digite um email', class: 'form-control', required: true %>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i> Pesquisar</button>
+        </div>
+      </div>
+    <% end %>
+    <br>
     <div class="col-md-12">
-      <h3>Pesquisa de Usuário</h3>
-      <%= form_tag(root_path, method: :get) do |f| %>
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div class="col-md-10">
-              <%= text_field_tag "email", nil, placeholder: 'Digite um email', class: 'form-control' %>
-            </div>
-            <div class="col-md-2">
-              <button type="submit" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true"></i> Pesquisar</button>
-            </div>
-          </div>
-        </div>
-      <% end %>
-      <br>
-      <% if @user %>
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <% @user.each do |user| %>
-              <div class="col-md-2">
-                <a href="#" class="thumbnail">
-                  <img src="..." alt="...">
-                </a>
-              </div>
-              <div class="col-md-10">
-                <b>Email:</b> <%= user.email %><br>
+      <div class="row">
+        <% if @user.present? %>
+          <div class="media block-update-card">
+            <a class="pull-left" href="#">
+              <img class="media-object update-card-MDimentions" src="http://3.bp.blogspot.com/-IbEOTNtCMyU/TfCAdHaAxEI/AAAAAAAAA8U/EATib38SSAM/s320/joe-mcelderry.jpg" alt="...">
+            </a>
+            <div class="media-body update-card-body">
+              <h4 class="media-heading">Informações</h4>
+              <% @user.each do |user| %>
+                <b>Email</b>: <%= user.email %><br>
                 <a href="/profiles/index/<%= user.email %>" class="btn btn-link pull-right">Detalhes</a>
-              </div>
-            <% end %>
+              <% end %>
+            </div>
           </div>
+        <% end %>
+
+        <div class="form-group">
+          <a href="/posts/new" class="btn btn-primary" style="margin-top: 30px;"><i class="fa fa-plus" aria-hidden="true"></i> Nova Postagem</a>
         </div>
-      <% end %>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <a href="/posts/new" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i>
- Nova Postagem</a>
-    <h3>Suas Postagens</h3>
+    <h3><i class="fa fa-refresh" aria-hidden="true"></i> Suas Postagens</h3>
+    <% if @posts.present? %>
     <ul class="timeline">
       <% @posts.each do |post| %>
-        <li>
-          <div class="timeline-badge"></div>
-          <div class="timeline-panel">
-            <div class="timeline-heading">
-              <h4 class="timeline-title"><%= post.title %></h4>
-              <p><small class="text-muted"><%= post.text %></small></p>
-              <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> <%= post.created_at %></small></p>
-            </div>
+      <li>
+        <div class="timeline-badge"><i class="fa fa-rocket" aria-hidden="true"></i></div>
+        <div class="timeline-panel">
+          <div class="timeline-heading">
+            <h4 class="timeline-title"><%= post.title %></h4>
+            <p><small class="text-muted"><%= post.text %></small></p>
+            <p><small class="text-muted"><i class="fa fa-clock-o" aria-hidden="true"></i> <%= post.created_at %></small></p>
           </div>
-        </li>
+        </div>
+      </li>
       <% end %>
     </ul>
+    <% else %>
+    <h1 class="text-center"><i class="fa fa-info-circle fa-4x" aria-hidden="true"></i><br> Nenhuma Postagem</h1>
+    <% end %>
   </div>
 </div>
