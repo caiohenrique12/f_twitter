@@ -27,7 +27,9 @@ RSpec.describe Relationship, type: :model do
   end
 
   it "Checks if user is already followed" do
-    relationship = Relationship.check_user_followed(2, 5)
+    relationship = Relationship.new
+    relationship.check_user_followed(2, 5)
+    expect(relationship).to be_truthy
   end
 
 end
