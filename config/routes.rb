@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'notifications/index'
   get 'profiles/index/:email' => 'profiles#index'
   get 'profiles/details'
   get 'profiles/follow/:follower_id/:followed_id' => "profiles#follow", as: "follow_user"

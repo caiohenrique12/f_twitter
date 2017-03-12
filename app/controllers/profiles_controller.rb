@@ -6,7 +6,8 @@ class ProfilesController < ApplicationController
   end
 
   def follow
-    @relationship = Relationship.follow_user(params[:follower_id], params[:followed_id])
+    @relationship = Relationship.new
+    @relationship.follow_user(params[:follower_id], params[:followed_id])
     flash[:notice] = "Agora vocẽ esta seguindo(a)!"
     redirect_to :back
   end

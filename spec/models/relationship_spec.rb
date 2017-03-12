@@ -13,7 +13,8 @@ RSpec.describe Relationship, type: :model do
   end
 
   it "Save the follow users" do
-    relationship = Relationship.follow_user(1,2)
+    relationship = Relationship.new
+    relationship.follow_user(1,2)
   end
 
   it "How many followers a user has" do
@@ -31,5 +32,12 @@ RSpec.describe Relationship, type: :model do
     relationship.check_user_followed(2, 5)
     expect(relationship).to be_truthy
   end
+
+  it "Notify user followed" do
+    relationship = Relationship.new
+    relationship.notify_user_followed(1)
+    expect(relationship).to be_truthy
+  end
+
 
 end

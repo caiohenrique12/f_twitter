@@ -1,14 +1,16 @@
 class Relationship < ActiveRecord::Base
+  belongs_to :user
 
-  def self.follow_user(follower_id, followed_id)
+  scope :how_many_followers, -> (id) { where("follower_id = ?", "#{id}").count(:followed_id) }
+  scope :how_many_users_follow, -> (id) { where("followed_id = ?", "#{id}").count(:follower_id) }
+  scope :notify_user_followed, -> (followed_id) { select('users.email, relationships.created_at').joins('INNER JOIN users ON relationships.follower_id = users.id').where("relationships.followed_id = ?", "#{followed_id}").order(created_at: :desc) }
+
+  def follow_user(follower_id, followed_id)
     @relationship = Relationship.new
     @relationship.follower_id = follower_id
     @relationship.followed_id = followed_id
     @relationship.save!
   end
-
-  scope :how_many_followers, -> (id) { where("follower_id = ?", "#{id}").count(:followed_id) }
-  scope :how_many_users_follow, -> (id) { where("followed_id = ?", "#{id}").count(:follower_id) }
 
   def check_user_followed(current_user, search_user)
     @relationship = Relationship.where("follower_id = #{current_user}")
@@ -18,5 +20,4 @@ class Relationship < ActiveRecord::Base
       end
     end
   end
-
 end

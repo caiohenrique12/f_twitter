@@ -21,7 +21,7 @@
             <div class="col-md-12">
               <div class="pull-left">
                 <i class="fa fa-user" aria-hidden="true"></i> <b style="padding-top: 15px;"><%= current_user.email %></b><br>
-                <a href="#" class="icon-info"><i class="fa fa-envelope" aria-hidden="true"></i> <span class="badge">0</span></a> /
+                <a href="/notifications/index" class="icon-info"><i class="fa fa-envelope" aria-hidden="true"></i> <span class="badge">0</span></a> /
                 <i class="fa fa-twitter" aria-hidden="true"></i> <b>Seguidores <span class="badge"><%= Relationship.how_many_users_follow(current_user.id) %></span></b><br>
                 / <i class="fa fa-twitter-square" aria-hidden="true"></i> <b>Seguindo <span class="badge"><%= Relationship.how_many_followers(current_user.id) %></span></b>
                 <% if user_signed_in? %>
@@ -29,7 +29,7 @@
                 <% end %>
               </div>
               <div class="pull-right">
-                <%= image_tag('tony-stark.jpg', class: 'pull-right img-circle img-responsive', height: '50', width: '50', style: 'margin-bottom: 5px;') %><br>
+                <img class="img-responsive user-photo" style="height: 70px;" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
               </div>
             </div>
           </div>
