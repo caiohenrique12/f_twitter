@@ -15,4 +15,19 @@ RSpec.describe Relationship, type: :model do
   it "Save the follow users" do
     relationship = Relationship.follow_user(1,2)
   end
+
+  it "How many followers a user has" do
+    relationship = Relationship.how_many_followers(1)
+    expect(relationship).to be >= 0
+  end
+
+  it "How many users follow" do
+    relationship = Relationship.how_many_users_follow(1)
+    expect(relationship).to be >= 0
+  end
+
+  it "Checks if user is already followed" do
+    relationship = Relationship.check_user_followed(2, 5)
+  end
+
 end

@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
   def index
     @user = User.find_by_user_email(params[:email])
+    @followers = Relationship.new
     @posts = Post.find_by_post(@user[0][:id])
   end
 
