@@ -34,10 +34,13 @@ RSpec.describe Relationship, type: :model do
   end
 
   it "Notify user followed" do
-    relationship = Relationship.new
-    relationship.notify_user_followed(1)
+    relationship = Relationship.notify_user_followed(1)
     expect(relationship).to be_truthy
   end
 
+  it "Notify user followed" do
+    relationship = Relationship.count_notify(1)
+    expect(relationship).to be_truthy
+  end
 
 end

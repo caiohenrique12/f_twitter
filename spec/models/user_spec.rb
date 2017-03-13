@@ -3,16 +3,11 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
 
   subject {
-    described_class.create(name: 'Caio Henrique', email: 'caiohenriqueads@gmail.com', password: '123456', password_confirmation: '123456')
+    described_class.create(email: 'fernanda@gmail.com', password: '123456', password_confirmation: '123456')
   }
 
   it "Should be a valid" do
     expect(subject).to be_valid
-  end
-
-  it "Should be a valid name" do
-    subject.name = nil
-    expect(subject).to_not be_valid
   end
 
   it "Should be a valid email" do

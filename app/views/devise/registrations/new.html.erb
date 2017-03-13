@@ -9,7 +9,6 @@
       <p id="profile-name" class="profile-name-card"></p>
       <span id="reauth-email" class="reauth-email"></span>
 
-      <%= f.text_field :name, required: true, class: 'form-control', placeholder: 'Nome' %>
       <%= f.email_field :email, class: 'form-control', placeholder: 'Email' %>
       <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Senha' %>
       <% if @minimum_password_length %>

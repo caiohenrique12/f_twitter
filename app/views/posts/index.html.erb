@@ -15,7 +15,7 @@
       <tr>
         <td><%= post.title %></td>
         <td><%= post.text %></td>
-        <td><%= post.created_at %></td>
+        <td><%= post.created_at.strftime('%d/%m/%Y : %I:%M%p') %></td>
         <td><%= link_to 'Detalhes', post, class: 'btn btn-info' %></td>
         <td><%= link_to 'Editar', edit_post_path(post), class: 'btn btn-info' %></td>
         <td><%= link_to 'Excluir', post, method: :delete, data: { confirm: 'Você Tem Certeza?' }, class: 'btn btn-warning' %></td>

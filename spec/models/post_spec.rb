@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Post, type: :model do
 
-  user = User.create(name: "Caio H", email: 'caio@gmail.com', password: '123456', password_confirmation: '123456')
+  # user = User.create(name: "Caio H", email: 'caio.henrique@gmail.com', password: '123456', password_confirmation: '123456')
 
   subject {
-    described_class.create(title: 'Hello Word', text: 'A maldição sem hello word', user_id: user.id)
+    described_class.create(title: 'Hello Word', text: 'A maldição sem hello word', user_id: 1)
   }
 
   it "Should be a valid" do
@@ -36,8 +36,7 @@ RSpec.describe Post, type: :model do
   end
 
   it "Return all posts with user signed in" do
-    post = Post.find_by_post(user.id)
-
+    post = Post.find_by_post(1)
     expect(post).to be
   end
 end
