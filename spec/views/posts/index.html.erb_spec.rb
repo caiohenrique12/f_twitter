@@ -18,12 +18,12 @@ RSpec.describe "posts/index", type: :view do
       Post.create!(
         :title => "My Title",
         :text => "My Text",
-        :user_id => @user.id
+        :user_id => 1
       ),
       Post.create!(
         :title => "My Title",
         :text => "My Text",
-        :user_id => @user.id
+        :user_id => 1
       )
     ])
   end

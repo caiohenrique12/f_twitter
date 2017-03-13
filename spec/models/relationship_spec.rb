@@ -29,7 +29,7 @@ RSpec.describe Relationship, type: :model do
 
   it "Checks if user is already followed" do
     relationship = Relationship.new
-    relationship.check_user_followed(2, 5)
+    relationship.check_user_followed(1, 2)
     expect(relationship).to be_truthy
   end
 

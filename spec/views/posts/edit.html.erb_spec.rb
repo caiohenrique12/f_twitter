@@ -17,7 +17,7 @@ RSpec.describe "posts/edit", type: :view do
     @post = assign(:post, Post.create!(
       :title => "MyString",
       :text => "MyText",
-      :user_id => @user.id
+      :user_id => 1
     ))
   end
 
@@ -30,7 +30,7 @@ RSpec.describe "posts/edit", type: :view do
 
       assert_select "textarea#post_text[name=?]", "post[text]"
 
-      assert_select "input#post_user_id[name=?]", "post[user_id]"
+      assert_select "hidden#post_user_id[name=?]", "post[user_id]"
     end
   end
 end

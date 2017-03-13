@@ -5,6 +5,6 @@ class Post < ActiveRecord::Base
   validates_length_of :title, maximum: 30
 
 
-  scope :find_by_post, -> (user_id) { where('user_id = ?', "#{user_id}")}
+  scope :find_by_post, -> (user_id) { where('user_id = ?', "#{user_id}").order(created_at: :desc)}
 
 end

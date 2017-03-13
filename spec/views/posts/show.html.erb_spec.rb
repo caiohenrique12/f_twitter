@@ -17,7 +17,7 @@ RSpec.describe "posts/show", type: :view do
     @post = assign(:post, Post.create!(
       :title => "Title",
       :text => "MyText",
-      :user_id => @user.id
+      :user_id => 1
     ))
   end
 
@@ -25,6 +25,6 @@ RSpec.describe "posts/show", type: :view do
     render
     expect(rendered).to match(/Title/)
     expect(rendered).to match(/MyText/)
-    expect(rendered).to match(//)
+    expect(rendered).to match(/1/)
   end
 end
